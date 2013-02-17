@@ -210,6 +210,12 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('hapi', 'run backend server', function () {
+    var done = this.async();
+    require("./server/index");
+    return done();
+  });
+
   grunt.renameTask('regarde', 'watch');
   // remove when mincss task is renamed
   grunt.renameTask('mincss', 'cssmin');
@@ -219,6 +225,7 @@ module.exports = function (grunt) {
     'coffee:dist',
     'compass:server',
     'livereload-start',
+    'hapi',
     'connect:livereload',
     'open',
     'watch'
