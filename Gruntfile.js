@@ -212,8 +212,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('hapi', 'run backend server', function () {
     var done = this.async();
-    require("./server/index");
-    return done();
+    var Server = require("./server/index");
+
+    return new Server({port: 8000}).start(done);
   });
 
   grunt.renameTask('regarde', 'watch');
