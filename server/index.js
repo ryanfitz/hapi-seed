@@ -22,5 +22,13 @@ var Server = module.exports = function(options) {
 };
 
 Server.prototype.start = function(callback) {
-  this._server.start(callback);
+  var self = this;
+
+  callback = callback || function(){};
+
+  this._server.start(function() {
+    Hapi.Log.event(['server','info'], 'started on port ' + self.options.port);
+
+    return callback();
+  });
 };
