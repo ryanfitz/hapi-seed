@@ -13,4 +13,8 @@ pids
 logs
 results
 
+.tmp
+dist
+.sass-cache
+
 npm-debug.log
